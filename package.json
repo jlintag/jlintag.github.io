@@ -56,7 +56,7 @@
     ]
   },
   "strapi": {
-    "uuid": "f51d4108-e5f4-4ffb-801b-fb98f26abe90"
+    "uuid": "29b94133-d308-40fd-ba59-f7f436c40a26"
   },
   "engines": {
     "node": ">=10.16.0 <=14.x.x",
