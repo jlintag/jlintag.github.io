@@ -11,7 +11,19 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "strapi": "3.6.1",
+    "strapi-admin": "3.6.1",
+    "strapi-utils": "3.6.1",
+    "strapi-plugin-content-type-builder": "3.6.1",
+    "strapi-plugin-content-manager": "3.6.1",
+    "strapi-plugin-users-permissions": "3.6.1",
+    "strapi-plugin-email": "3.6.1",
+    "strapi-plugin-upload": "3.6.1",
+    "strapi-plugin-i18n": "3.6.1",
+    "strapi-connector-bookshelf": "3.6.1",
+    "knex": "0.21.18",
+    "sqlite3": "5.0.0"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -19,7 +31,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "strapi:develop": "strapi develop",
+    "strapi:start": "strapi start",
+    "strapi:build": "strapi build",
+    "strapi": "strapi"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +54,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "strapi": {
+    "uuid": "f51d4108-e5f4-4ffb-801b-fb98f26abe90"
+  },
+  "engines": {
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": "^6.0.0"
+  },
+  "license": "MIT"
 }
