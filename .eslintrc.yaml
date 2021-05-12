@@ -1,7 +1,9 @@
+parser: "@babel/eslint-parser"
 extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended']
 plugins: 
   - react
   - prettier
+  - jest
 env:
   commonjs: true
   es6: true
@@ -11,20 +13,13 @@ parserOptions:
   ecmaFeatures:
     jsx: true
   sourceType: module
+  requireConfigFile: false
 globals:
   strapi: true
-rules:
-  indent:
-    - error
-    - 2
-    - SwitchCase: 1
-  linebreak-style:
-    - error
-    - unix
-  no-console: 0
-  quotes:
-    - error
-    - single
-  semi:
-    - error
-    - always
+settings:
+  import/parsers: 
+    espree: 
+      - .js
+      - .jsx
+  react: 
+    version: detect
