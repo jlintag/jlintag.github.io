@@ -1,0 +1,22 @@
+{
+  "name": "jlintag.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jlintag/jlintag.github.io.git",
+  "author": "jlintag <jlintag@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/eslint-parser": "^7.13.14",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "prettier": "^2.3.0",
+    "undefined": "^0.1.0"
+  },
+  "scripts": {
+    "lint": "eslint --fix . --ignore-path ./.gitignore"
+  }
+}

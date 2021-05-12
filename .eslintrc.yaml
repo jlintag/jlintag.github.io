@@ -1,0 +1,30 @@
+extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended']
+plugins: 
+  - react
+  - prettier
+env:
+  commonjs: true
+  es6: true
+  node: true
+  browser: false
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  sourceType: module
+globals:
+  strapi: true
+rules:
+  indent:
+    - error
+    - 2
+    - SwitchCase: 1
+  linebreak-style:
+    - error
+    - unix
+  no-console: 0
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
