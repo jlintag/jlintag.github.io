@@ -1,9 +1,6 @@
 parser: "@babel/eslint-parser"
-extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended']
-plugins: 
-  - react
-  - prettier
-  - jest
+extends: ['eslint:recommended', 'prettier', 'plugin:react/recommended', 'plugin:prettier/recommended', 'react-app', 'react-app/jest']
+plugins: ['react', 'prettier']
 env:
   commonjs: true
   es6: true
@@ -23,3 +20,5 @@ settings:
       - .jsx
   react: 
     version: detect
+rules:
+  prettier/prettier: error
