@@ -1,5 +1,13 @@
 parser: "@babel/eslint-parser"
-extends: ['eslint:recommended', 'prettier', 'plugin:react/recommended', 'plugin:prettier/recommended', 'react-app', 'react-app/jest']
+extends: [
+  'eslint:recommended',
+  'prettier',
+  'plugin:react/recommended',
+  'plugin:jsx-a11y/recommended',
+  'plugin:prettier/recommended',
+  'react-app',
+  'react-app/jest'
+]
 plugins: ['react', 'prettier']
 env:
   commonjs: true
@@ -7,6 +15,7 @@ env:
   node: true
   browser: false
 parserOptions:
+  ecmaVersion: 2020
   ecmaFeatures:
     jsx: true
   sourceType: module
