@@ -14,11 +14,9 @@ parserOptions:
 globals:
   strapi: true
 settings:
-  import/parsers: 
-    espree: 
-      - .js
-      - .jsx
-  react: 
+  import/parsers:
+    espree:  ['.js', '.jsx']
+  react:
     version: detect
 rules:
   prettier/prettier: error
