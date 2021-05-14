@@ -25,10 +25,12 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn
+    - name: install
       working_directory: ./web
-    - run: ls
-    - run: yarn build --if-present
+      run: yarn
+    - name: build
       working_directory: ./web
-    - run: yarn test
+      run: yarn build --if-present
+    - name: test
       working_directory: ./web
+      run: yarn test
