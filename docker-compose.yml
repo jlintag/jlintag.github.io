@@ -16,7 +16,13 @@ services:
     ports:
       - 1337:1337
     volumes:
-      - ./strapi:/
+      - ./strapi/api:/app/api
+      - ./strapi/extensions:/app/extensions
+      - ./strapi/config:/app/config
+      - ./strapi/public:/app/public
+      - ./strapi/.tmp:/app/.tmp
+      - ./strapi/.yarn:/app/.yarn
+
 #       # This docker compose file is for dev use.
 # # It uses the dockerfile.local and mounts your local files rather than copy than
 # # See the readme for more detail

@@ -4,8 +4,7 @@ WORKDIR /app
 COPY yarn.lock .
 COPY package.json .
 
-RUN yarn --frozen-lockfile
+RUN yarn
+RUN yarn build
 
-COPY ./ ./
-
-CMD ["strapi", "develop"]
+CMD ["yarn", "start"]
