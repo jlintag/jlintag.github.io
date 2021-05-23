@@ -1,4 +1,88 @@
 version: "3.9"
 
-services: 
-    
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./web/src:/src
+  api:
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    ports:
+      - 1337:1337
+    volumes:
+      - ./strapi:/
+#       # This docker compose file is for dev use.
+# # It uses the dockerfile.local and mounts your local files rather than copy than
+# # See the readme for more detail
+
+# version: '3.1'
+
+# services:
+
+#   mongo:
+#     image: mongo:3.6
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: example
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - data_db:/data/db
+
+#   api:
+#     build:
+#       context: .
+#       dockerfile: backend/Dockerfile.local
+#       args:
+#         CODEPATH: backend
+#     ports:
+#       - 8080:8080
+#       - 5005:5005
+#     environment:
+#       SPRING_MONGODB_URL: "mongodb://root:example@mongo:27017/Results?serverSelectionTimeoutMS=3000&connectTimeoutMS=3000&authSource=admin"
+#       SPRING_SECURITY_USER_NAME: admin
+#       SPRING_SECURITY_USER_PASSWORD: 123
+#     depends_on:
+#       - mongo
+
+#   web:
+#     build:
+#       context: ./react-frontend
+#       dockerfile: Dockerfile.local
+#     ports:
+#       - 3000:3000
+#     environment:
+#       REACT_APP_API_URL: "http://localhost:8080/api"
+#       REACT_APP_DEBUG_ENABLED: "true"
+#       REACT_APP_PORT: "3000"
+#       REACT_APP_API_USERNAME: admin
+#       REACT_APP_API_PASSWORD: 123
+#       REACT_APP_SEGMENT_KEY: dsC0V03kiQuQZEFKQdBwCd5iXQecGyLg
+#       REACT_APP_REDIRECT_URL: https://www.wwt.com/search?pageTypes=assessment
+#     volumes:
+#       - ./react-frontend:/source
+#     depends_on:
+#       - api
+
+#   cypress:
+#     image: cypress/included:7.2.0
+#     environment:
+#       CYPRESS_BASE_URL: http://web:3000
+#       CYPRESS_CACHE_FOLDER: cache/Cypress
+#     working_dir: /e2e
+#     volumes:
+#       - ./e2e/cypress:/e2e/cypress
+#       - ./e2e/cypress.json:/e2e/cypress.json
+#       - ./e2e/package.json:/e2e/package.json
+#       - cache_Cypress:/e2e/cache/Cypress
+#     entrypoint: bash -c "npm i && npm run e2e:headless"
+
+# volumes:
+#   data_db:
+#   cache_Cypress:
