@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_bullets",
+  "info": {
+    "name": "Work Bullet"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "work_section": {
+      "via": "work_bullets",
+      "model": "work-section"
+    },
+    "Description": {
+      "type": "string"
+    }
+  }
+}

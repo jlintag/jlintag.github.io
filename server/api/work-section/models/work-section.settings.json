@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_sections",
+  "info": {
+    "name": "Work Section",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Workplace": {
+      "type": "string"
+    },
+    "Start": {
+      "type": "date"
+    },
+    "End": {
+      "type": "date"
+    },
+    "work_bullets": {
+      "via": "work_section",
+      "collection": "work-bullet"
+    }
+  }
+}

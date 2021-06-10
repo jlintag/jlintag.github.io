@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/work-bullets",
+      "handler": "work-bullet.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/work-bullets/count",
+      "handler": "work-bullet.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/work-bullets/:id",
+      "handler": "work-bullet.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/work-bullets",
+      "handler": "work-bullet.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/work-bullets/:id",
+      "handler": "work-bullet.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/work-bullets/:id",
+      "handler": "work-bullet.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
