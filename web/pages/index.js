@@ -1,12 +1,11 @@
 import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import { fetchGraphql } from 'react-tinacms-strapi'
 import HeroSection from '../components/hero-section'
+import MoreSections from '../components/more-sections'
 
 export default function Index({ allSections }) {
   const heroSection = allSections[0]
@@ -28,25 +27,14 @@ export default function Index({ allSections }) {
               end={heroSection.End}
             />
           )}
-          {/* {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
-          {/* {moreSections.length > 0 && <MoreStories posts={morePosts} />} */}
+          {moreSections.length > 0 && <MoreSections sections={moreSections} />}
         </Container>
       </Layout>
     </>
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params, preview, previewData }) {
   const postResults = await fetchGraphql(
     process.env.STRAPI_URL,
     `
@@ -63,8 +51,12 @@ export async function getStaticProps() {
     }
   `
   )
-
+  if (preview) {
+    return {
+      props: { allSections: postResults.data.workSections, preview, ...previewData },
+    };
+  }
   return {
-    props: { allSections: postResults.data.workSections },
+    props: { allSections: postResults.data.workSections, preview: false },
   }
 }

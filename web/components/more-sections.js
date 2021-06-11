@@ -1,6 +1,5 @@
-import PostPreview from '../components/post-preview'
+const MoreSections = ({ sections }) => {
 
-export default function MoreSections({ sections }) {
   const count = sections.length ?? 0;
   return (
     <section>
@@ -8,3 +7,6 @@ export default function MoreSections({ sections }) {
     </section>
   )
 }
+
+export default MoreSections;
+
