@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "work_bullets",
   "info": {
-    "name": "Work Bullet"
+    "name": "Work Bullet",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -15,7 +16,7 @@
       "via": "work_bullets",
       "model": "work-section"
     },
-    "Description": {
+    "description": {
       "type": "string"
     }
   }

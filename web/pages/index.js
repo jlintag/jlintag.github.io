@@ -4,12 +4,11 @@ import Layout from '../components/layout'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import { fetchGraphql } from 'react-tinacms-strapi'
-import HeroSection from '../components/hero-section'
+import WorkSection from '../components/work-section'
 import MoreSections from '../components/more-sections'
 
 export default function Index({ allSections }) {
-  const heroSection = allSections[0]
-  console.log(heroSection)
+  const initialSection = allSections[0]
   const moreSections = allSections.slice(1)
   return (
     <>
@@ -19,13 +18,8 @@ export default function Index({ allSections }) {
         </Head>
         <Container>
           <Intro />
-          {heroSection && (
-            <HeroSection
-              title={heroSection.Title}
-              workplace={heroSection.Workplace}
-              start={heroSection.Start}
-              end={heroSection.End}
-            />
+          {initialSection && (
+            <WorkSection section={initialSection} />
           )}
           {moreSections.length > 0 && <MoreSections sections={moreSections} />}
         </Container>
@@ -40,12 +34,13 @@ export async function getStaticProps({ params, preview, previewData }) {
     `
     query{
       workSections {
-        Title
-        Workplace
-        Start
-        End
+        id
+        title
+        workplace
+        start
+        end
         work_bullets {
-          Description
+          description
         }
       }
     }

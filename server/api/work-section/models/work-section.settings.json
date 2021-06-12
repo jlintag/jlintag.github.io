@@ -12,16 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Workplace": {
+    "workplace": {
       "type": "string"
     },
-    "Start": {
+    "start": {
       "type": "date"
     },
-    "End": {
+    "end": {
       "type": "date"
     },
     "work_bullets": {
