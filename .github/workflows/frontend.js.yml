@@ -7,8 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy web:
+  deploy_web:
     runs-on: ubuntu-latest
+    env:
+      work-dir: ./web
 
     strategy:
       matrix:
@@ -22,20 +24,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # - name: Cache dependencies
-      #   uses: actions/cache@v2
-      #   working-directory: ${{env.work-dir}}
-      #   with:
-      #     path: '**/node_modules'
-      #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        working-directory: ${{env.work-dir}}
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Build
-        working-directory: ./web
+        working-directory: ${{env.work-dir}}
         run: |
-          ls -lah
           yarn install --frozen-lockfile
-          yarn test
-          yarn build --if-present
+          yarn build
           yarn export
 
       - name: Deploy
