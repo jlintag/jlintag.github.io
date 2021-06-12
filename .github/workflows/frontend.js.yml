@@ -34,6 +34,7 @@ jobs:
       - name: Build
         working-directory: ${{env.work-dir}}
         run: |
+          ls -lah
           yarn install --frozen-lockfile
           yarn build
           yarn export
