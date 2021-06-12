@@ -23,10 +23,16 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^4.3.0",
     "prettier": "^2.3.0",
-    "prettier-eslint": "^12.0.0"
+    "prettier-eslint": "^12.0.0",
+    "npm-run-all": "4.1.5",
+    "wait-on": "5.2.1",
+    "cross-env": "7.0.3"
   },
   "scripts": {
     "lint:fix": "eslint --fix . --ignore-path ./.gitignore",
-    "lint:format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
+    "lint:format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "develop:backend": "yarn --cwd backend develop",
+    "develop:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend develop",
+    "develop": "cross-env FORCE_COLOR=1 npm-run-all -l -p develop:*"
   }
 }
