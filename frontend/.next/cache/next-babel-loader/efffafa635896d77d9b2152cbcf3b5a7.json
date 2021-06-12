@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { getStrapiURL } from \"./api\";\nexport function getStrapiMedia(media) {\n  const imageUrl = media.url.startsWith(\"/\") ? getStrapiURL(media.url) : media.url;\n  return imageUrl;\n}","map":null,"metadata":{},"sourceType":"module"}

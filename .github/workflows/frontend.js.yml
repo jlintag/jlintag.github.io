@@ -12,7 +12,7 @@ jobs:
   deploy_web:
     runs-on: ubuntu-latest
     env:
-      work-dir: ./web
+      work-dir: ./frontend
 
     strategy:
       matrix:
