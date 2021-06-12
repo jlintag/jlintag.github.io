@@ -1,0 +1,46 @@
+name: Deploy strapi server to digital ocean
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [develop]
+
+  workflow_dispatch:
+
+jobs:
+  deploy_web:
+    runs-on: ubuntu-latest
+    env:
+      work-dir: ./backend
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Build
+        working-directory: ${{env.work-dir}}
+        run: |
+          NODE_ENV=production
+          yarn install --frozen-lockfile
+          yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./out
