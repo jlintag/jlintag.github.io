@@ -9,8 +9,6 @@ on:
 jobs:
   deploy web:
     runs-on: ubuntu-latest
-    env:
-      work-dir: ./web
 
     strategy:
       matrix:
@@ -24,19 +22,20 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        working-directory: ${{env.work-dir}}
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      # - name: Cache dependencies
+      #   uses: actions/cache@v2
+      #   working-directory: ${{env.work-dir}}
+      #   with:
+      #     path: '**/node_modules'
+      #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Build
-        working-directory: ${{env.work-dir}}
+        working-directory: ./web
         run: |
           ls -lah
           yarn install --frozen-lockfile
-          yarn build
+          yarn test
+          yarn build --if-present
           yarn export
 
       - name: Deploy
