@@ -18,9 +18,7 @@ export default function Index({ allSections }) {
         </Head>
         <Container>
           <Intro />
-          {initialSection && (
-            <WorkSection section={initialSection} />
-          )}
+          {initialSection && <WorkSection section={initialSection} />}
           {moreSections.length > 0 && <MoreSections sections={moreSections} />}
         </Container>
       </Layout>
@@ -48,10 +46,14 @@ export async function getStaticProps({ params, preview, previewData }) {
   )
   if (preview) {
     return {
-      props: { allSections: postResults.data.workSections, preview, ...previewData },
-    };
+      props: {
+        allSections: postResults.data.workSections,
+        preview,
+        ...previewData
+      }
+    }
   }
   return {
-    props: { allSections: postResults.data.workSections, preview: false },
+    props: { allSections: postResults.data.workSections, preview: false }
   }
 }
